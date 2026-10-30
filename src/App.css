@@ -207,3 +207,14 @@ button.secundario:hover {
   padding: 14px 20px;
   border-top: 1px solid var(--borda);
 }
+
+/* Banner de demonstração anti-phishing */
+.aviso-demo {
+  background: #c0392b;
+  color: #fff;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
