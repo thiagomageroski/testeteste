@@ -1,0 +1,209 @@
+:root {
+  --verde: #1b7a3e;
+  --verde-claro: #2d9e56;
+  --amarelo: #ffd166;
+  --fundo: #eef6f0;
+  --texto: #1f2a24;
+  --borda: #d4e6da;
+  --erro: #c0392b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.pagina {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Cabeçalho institucional */
+.topo {
+  background: var(--verde);
+  color: #fff;
+  border-bottom: 4px solid var(--amarelo);
+}
+
+.topo-conteudo {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brasao {
+  display: flex;
+}
+
+.topo-texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.topo-texto strong {
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+}
+
+.topo-texto span {
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
+
+/* Área central com o card */
+.centro {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-top: 5px solid var(--verde);
+  border-radius: 12px;
+  padding: 32px 28px;
+  box-shadow: 0 10px 30px rgba(27, 67, 50, 0.1);
+}
+
+.card h1 {
+  font-size: 1.35rem;
+  margin: 0 0 8px;
+  color: var(--verde);
+}
+
+.subtitulo {
+  margin: 0 0 24px;
+  color: #556;
+  font-size: 0.95rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input {
+  padding: 12px 14px;
+  font-size: 1.05rem;
+  border: 1.5px solid var(--borda);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input:focus {
+  border-color: var(--verde-claro);
+}
+
+.erro {
+  color: var(--erro);
+  font-size: 0.82rem;
+  margin-top: 6px;
+}
+
+button {
+  margin-top: 22px;
+  padding: 13px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--verde);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+button:hover:not(:disabled) {
+  background: var(--verde-claro);
+}
+
+button:disabled {
+  background: #a8b5af;
+  cursor: not-allowed;
+}
+
+button.secundario {
+  background: transparent;
+  color: var(--verde);
+  border: 1.5px solid var(--verde);
+}
+
+button.secundario:hover {
+  background: rgba(27, 67, 50, 0.06);
+}
+
+/* Estado de sucesso */
+.sucesso {
+  text-align: center;
+}
+
+.check {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: #fff;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brasao {
+  display: block;
+  width: 40px;
+  height: 46px;
+  object-fit: contain;
+  flex-shrink: 0;
+  max-width: 40px;
+  max-height: 46px;
+}
+
+.topo-conteudo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topo-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+@media (max-width: 480px) {
+  .brasao {
+    width: 40px;
+    height: 46px;
+  }
+}
+
+/* Rodapé */
+.rodape {
+  background: #e3e9e6;
+  color: #4a5551;
+  text-align: center;
+  font-size: 0.78rem;
+  padding: 14px 20px;
+  border-top: 1px solid var(--borda);
+}
